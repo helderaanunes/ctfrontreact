@@ -1,23 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import CadastrarDoenca from './CadastrarDoenca';
+import ListarDoenca from './ListarDoenca';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          IFPE asda asdas <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CadastrarDoenca></CadastrarDoenca>
+      <ListarDoenca></ListarDoenca>
     </div>
   );
 }
