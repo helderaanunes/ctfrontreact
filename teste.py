@@ -1,14 +1,10 @@
-def calcularTempo(tamanhoVetor, tempo):
+numero = int(input("digite o numero secreto: "))
 
-    esquerda = 5 * tempo
-    direita =  ((esquerda * tamanhoVetor) + (3 * tempo) )
+while numero != 321:
+    if numero < 321:
+        print("menor")
+
+    elif numero > 321:
+        print("maior")
     
-    return direita
-
-tamanho = int(input("Digite um tamanho para o vetor: "))
-tempo = int(input("Digite um tempo para a operação: "))
-
-calculo = calcularTempo(tamanho, tempo)
-
-print(calculo)
-    
+    numero = int(input("digite o numero secreto: "))
