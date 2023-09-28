@@ -24,7 +24,30 @@ function App() {
   const limparFormulario = () => {
     setObjDoenca(doenca);
   }
-
+  const remover = (id) => {
+    fetch("http://localhost:8080/doencas/"+id, {
+      method: "delete",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((retorno) => retorno.json())
+      .then((retornoConvertidoEmJson) => {
+        if (retornoConvertidoEmJson.mensagem !== undefined) {
+          alert(retornoConvertidoEmJson.mensagem);
+        } else {
+          alert("Removido com sucesso!");
+        }
+      })
+      .then(
+        () => {
+          fetch("http://localhost:8080/doencas")
+            .then((retorno) => retorno.json())
+            .then((retornoConvertidoEmJson) => setDoencas(retornoConvertidoEmJson));
+        }
+      );
+  };
   const cadastrar = () => {
     fetch("http://localhost:8080/doencas", {
       method: "post",
@@ -54,7 +77,10 @@ function App() {
         eventoCadastrar={cadastrar}
         obj={objDoenca}
       ></CadastrarDoenca>
-      <ListarDoenca lista={doencas}></ListarDoenca>
+      <ListarDoenca 
+      lista={doencas} 
+      eventoRemover={remover}
+      ></ListarDoenca>
     </div>
   );
 }

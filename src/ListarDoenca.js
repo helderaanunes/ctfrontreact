@@ -1,4 +1,4 @@
-function ListarDoenca( {lista} ){
+function ListarDoenca( {lista,eventoRemover} ){
     return (
         <table className="table red">
             <thead>
@@ -16,7 +16,7 @@ function ListarDoenca( {lista} ){
                             <td>{obj.id}</td>
                             <td>{obj.descricao}</td>
                             <td>
-                            <button type="button" className="btn btn-outline-danger">
+                            <button type="button" onClick={() => (eventoRemover(obj.id))} className="btn btn-outline-danger">
                                 <span className="bi-trash"></span>Remover
                             </button>
                             <button type="button" className="btn btn-outline-warning">
