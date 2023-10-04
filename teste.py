@@ -1,10 +1,14 @@
-numero = int(input("digite o numero secreto: "))
+def ordenarVetor(vetor):
+    for i in range(1, len(vetor)):
+        menor = vetor[i]
+        j = i - 1
 
-while numero != 321:
-    if numero < 321:
-        print("menor")
+        while j >= 0 and menor < vetor[j]:
+            vetor[j+1] = vetor[j]
+            j -= 1
+        vetor[j+1] = menor
 
-    elif numero > 321:
-        print("maior")
-    
-    numero = int(input("digite o numero secreto: "))
+numeros = [64, 25, 12, 22, 11]
+
+var = ordenarVetor(numeros)
+print(var)

@@ -69,17 +69,60 @@ function App() {
       });
   };
 
+//Aqui eu comecei a fuunção de editar
+  const [modoCadastro, setModoCadastro] = useState("cadastro");
+
+  const editarDoenca = (doencaParaEditar) => {
+    setModoCadastro("edicao");
+    setObjDoenca(doencaParaEditar);
+  };
+
+  const atualizar = () => {
+    fetch("http://localhost:8080/doencas/"+objDoenca.id, {
+      method: "put",
+      body: JSON.stringify(objDoenca),
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((retorno) => retorno.json())
+      .then((retornoConvertidoEmJson) => {
+        if (retornoConvertidoEmJson.mensagem !== undefined) {
+          alert(retornoConvertidoEmJson.mensagem);
+        } else {
+          alert("Atualizado com sucesso!");
+        }
+      }).then(()=>{
+        fetch("http://localhost:8080/doencas")
+        .then((retorno) => retorno.json())
+        .then((retornoConvertidoEmJson) => setDoencas(retornoConvertidoEmJson));
+      });;
+  };
+
   return (
     <div className="App">
       <p>O que recebeu foi: {JSON.stringify(objDoenca)}</p>
       <CadastrarDoenca
+        modo = {modoCadastro}
         eventoTeclado={eventoDigitar}
-        eventoCadastrar={cadastrar}
+        eventoCadastrar={
+          () => {
+            if (modoCadastro === "cadastro") {
+              cadastrar();
+            } else if (modoCadastro === "edicao") {
+              atualizar();
+              setModoCadastro("cadastro");
+            }
+            limparFormulario();
+          }
+        }
         obj={objDoenca}
       ></CadastrarDoenca>
       <ListarDoenca 
       lista={doencas} 
       eventoRemover={remover}
+      editar ={editarDoenca}
       ></ListarDoenca>
     </div>
   );

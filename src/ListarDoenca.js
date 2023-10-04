@@ -1,4 +1,4 @@
-function ListarDoenca( {lista,eventoRemover} ){
+function ListarDoenca( {lista,eventoRemover,editar} ){
     return (
         <table className="table red">
             <thead>
@@ -19,7 +19,9 @@ function ListarDoenca( {lista,eventoRemover} ){
                             <button type="button" onClick={() => (eventoRemover(obj.id))} className="btn btn-outline-danger">
                                 <span className="bi-trash"></span>Remover
                             </button>
-                            <button type="button" className="btn btn-outline-warning">
+                            <button type="button" className="btn btn-outline-warning" 
+                            onClick={()=>(editar(obj))}
+                            >
                                 <span className="bi-pen"></span>Editar
                             </button>
                             </td>
