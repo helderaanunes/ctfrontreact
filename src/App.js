@@ -2,6 +2,7 @@ import "./App.css";
 import CadastrarDoenca from "./CadastrarDoenca";
 import ListarDoenca from "./ListarDoenca";
 import { useEffect, useState } from "react";
+import CrudTurma from "./turma/CrudTurma";
 
 function App() {
   const doenca = {
@@ -101,7 +102,8 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <CrudTurma></CrudTurma>
+   /* <div className="App">
       <p>O que recebeu foi: {JSON.stringify(objDoenca)}</p>
       <CadastrarDoenca
         modo = {modoCadastro}
@@ -124,7 +126,7 @@ function App() {
       eventoRemover={remover}
       editar ={editarDoenca}
       ></ListarDoenca>
-    </div>
+    </div>*/
   );
 }
 
