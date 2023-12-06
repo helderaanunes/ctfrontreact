@@ -2,7 +2,7 @@ import "./App.css";
 import CadastrarDoenca from "./CadastrarDoenca";
 import ListarDoenca from "./ListarDoenca";
 import { useEffect, useState } from "react";
-import CrudTurma from "./turma/CrudTurma";
+import Turma from "./turma/Turma";
 
 function App() {
   const doenca = {
@@ -102,7 +102,7 @@ function App() {
   };
 
   return (
-    <CrudTurma></CrudTurma>
+    <Turma></Turma>
    /* <div className="App">
       <p>O que recebeu foi: {JSON.stringify(objDoenca)}</p>
       <CadastrarDoenca
